@@ -1,13 +1,22 @@
 import Koa from 'koa';
-const path = require('path');
-const statics = require('koa-static');
-const helmet = require('koa-helmet');
-const router = require('./routes/router');
+import path from 'path';
+import helmet from 'koa-helmet';
+import statics from 'koa-static';
+import koaBody from 'koa-body';
+import json from 'koa-json';
+import cors from '@koa/cors';
+import compose from 'koa-compose';
+import router from './routes/router';
 
 const app = new Koa();
+const middleware = compose([
+    koaBody(),
+    json({ pretty: false, param: 'pretty' }),
+    cors(),
+    statics(path.join(__dirname, '../public')),
+    helmet()
+])
 
-app.use(helmet());
-app.use(statics(path.join(__dirname, '../public')));
+app.use(middleware);
 app.use(router());
-
 app.listen(3000);
