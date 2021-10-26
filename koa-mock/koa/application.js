@@ -1,8 +1,14 @@
 const http = require('http');
+const context = require('./context');
+const request = require('./request');
+const response = require('./response');
+
 
 class Application {
     constructor() {
-        
+        this.context = Object.create(context);
+        this.request = Object.create(request);
+        this.response = Object.create(response);
     }
     use(fn) {
         this.fn = fn;
