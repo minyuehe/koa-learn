@@ -16,6 +16,7 @@ const middleware = compose([
     statics(path.join(__dirname, '../public')),
     helmet()
 ])
+console.log(process.env.NODE_ENV,"here");
 
 app.use(middleware);
 app.use(router());

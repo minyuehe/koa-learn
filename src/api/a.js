@@ -1,5 +1,5 @@
 const a = ctx => {
-    ctx.body = "love cherry,,";
+    ctx.body = "love cherry!!";
 };
 
 module.exports = a;
