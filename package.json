@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec babel-node ./src/index.js",
+    "dev": "cross-env NODE_ENV=development nodemon --exec babel-node --inspect ./src/index.js",
     "webpack:debug": "node --inspect-brk ./node_modules/.bin/webpack --progress",
-    "webpack:test": "NODE_ENV=development webpack",
-    "dev:build": "NODE_ENV=development webpack --config ./config/webpack.config.dev.js",
-    "prod:build": "NODE_ENV=production webpack --config ./config/webpack.config.prod.js"
+    "webpack:test": "cross-env NODE_ENV=development webpack",
+    "dev:build": "cross-env NODE_ENV=development webpack --config ./config/webpack.config.dev.js",
+    "prod:build": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.prod.js",
+    "clean": "rimraf dist"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,7 @@
     "koa-body": "^4.2.0",
     "koa-combine-routers": "^4.0.2",
     "koa-compose": "^4.1.0",
+    "koa-compress": "^5.1.0",
     "koa-helmet": "^6.1.0",
     "koa-json": "^2.0.2",
     "koa-router": "^10.1.1",
